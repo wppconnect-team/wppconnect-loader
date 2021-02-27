@@ -1,0 +1,46 @@
+{
+  "name": "@wppconnect-team/loader",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/loader.js",
+  "types": "dist/loader.d.js",
+  "scripts": {
+    "compile:dev": "webpack --mode development",
+    "compile:prod": "webpack --mode production",
+    "compile:watch": "webpack --mode development --watch",
+    "license:add": "license-check-and-add add",
+    "license:check": "license-check-and-add check",
+    "lint": "npx eslint -c .eslintrc.js --ext .ts src",
+    "prepare": "npm run compile:prod",
+    "serve:dev": "webpack serve --mode development",
+    "serve:prod": "webpack serve --mode production",
+    "serve:watch": "webpack serve --mode development --progress --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wppconnect-team/wppconnect-loader.git"
+  },
+  "author": "wppconnect-team",
+  "license": "LGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/wppconnect-team/wppconnect-loader/issues"
+  },
+  "homepage": "https://github.com/wppconnect-team/wppconnect-loader#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.14.0",
+    "@typescript-eslint/parser": "^4.14.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "events": "^3.3.0",
+    "license-check-and-add": "^4.0.2",
+    "npm-dts-webpack-plugin": "^1.3.6",
+    "prettier": "^2.2.1",
+    "ts-loader": "^8.0.14",
+    "typescript": "^4.2.2",
+    "webpack": "^5.17.0",
+    "webpack-cli": "^4.4.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

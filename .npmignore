@@ -1,0 +1,9 @@
+.*
+*.map
+*.tgz
+*.zip
+docs
+src
+tsconfig.json
+typedoc.json
+webpack.config.js
