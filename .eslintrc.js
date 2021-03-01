@@ -16,6 +16,7 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   rules: {
+    '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     // @todo more restrictive
     'no-empty': ['error', { allowEmptyCatch: true }],

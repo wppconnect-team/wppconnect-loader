@@ -37,15 +37,17 @@ export default class {
    */
   private _events = new Map<string, Function[]>();
 
-  public on(topic: string, cb: Function) {
+  public on(topic: string, cb: Function): boolean {
     const oldEvents = this._events.get(topic);
     if (this._events.has(topic)) {
-      return this._events.set(topic, [...oldEvents, cb]);
+      this._events.set(topic, [...oldEvents, cb]);
     }
-    return this._events.set(topic, [cb]);
+    this._events.set(topic, [cb]);
+
+    return true;
   }
 
-  public off(topic: string, cb?: Function) {
+  public off(topic: string, cb?: Function): boolean {
     if (!cb) {
       return this._events.delete(topic);
     }
@@ -59,7 +61,7 @@ export default class {
 
     return false;
   }
-  protected emit(topic: string, ...args: any[]) {
+  protected emit(topic: string, ...args: any[]): void {
     const myListeners = this._events.get(topic);
     if (Array.isArray(myListeners) && myListeners.length) {
       myListeners.forEach((event) => {
@@ -82,7 +84,7 @@ export default class {
     }
   }
 
-  public initObserver() {
+  public initObserver(): void {
     if (this.mutationObserver) {
       return;
     }
@@ -119,13 +121,13 @@ export default class {
     });
   }
 
-  public refreshModules() {
+  public refreshModules(): Promise<boolean> {
     if (!Array.isArray(window.webpackChunkbuild)) {
-      return Promise.resolve();
+      return Promise.resolve(false);
     }
 
     if (!window.webpackChunkbuild.length) {
-      return Promise.resolve();
+      return Promise.resolve(false);
     }
 
     const currentSize = this._modules.size;
@@ -135,9 +137,9 @@ export default class {
       window.webpackChunkbuild.push([
         [id],
         {},
-        (require: any) => {
-          for (const moduleId in require.m) {
-            const module = require(moduleId);
+        (moduleLoader: any) => {
+          for (const moduleId in moduleLoader.m) {
+            const module = moduleLoader(moduleId);
             this._modules.set(moduleId + '', module);
           }
 
@@ -253,21 +255,21 @@ export default class {
    * Return the webpack module from ID
    * @param moduleId Webpack module ID
    */
-  public get(moduleId: string) {
+  public get(moduleId: string): any {
     return this._modules.get(moduleId);
   }
 
   public forEach(
     callbackfn: (value: any, key: string, map: Map<string, any>) => void
-  ) {
+  ): void {
     return this._modules.forEach(callbackfn, this);
   }
 
-  public get size() {
+  public get size(): number {
     return this._modules.size;
   }
 
-  public dispose() {
+  public dispose(): void {
     this.mutationObserver.disconnect();
     this._modules.clear();
     this._events.clear();
