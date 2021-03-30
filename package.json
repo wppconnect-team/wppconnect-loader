@@ -1,6 +1,6 @@
 {
   "name": "@wppconnect-team/loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/loader.js",
   "types": "dist/loader.d.js",
