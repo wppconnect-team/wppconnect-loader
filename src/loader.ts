@@ -186,28 +186,12 @@ export default class {
    * @param reverse Search in reverse order
    */
   public searchModule(condition: SearchModuleCondition, reverse = false): any {
-    let ids = Array.from(this._modules.keys());
+    const moduleId = this.searchModuleId(condition, reverse);
 
-    if (reverse) {
-      ids = ids.reverse();
+    if (moduleId) {
+      return this._modules.get(moduleId);
     }
 
-    for (const moduleId of ids) {
-      try {
-        const module = this._modules.get(moduleId);
-
-        const result = condition(module, moduleId);
-
-        if (result === true) {
-          return module;
-        }
-        if (result) {
-          return result;
-        }
-      } catch (error) {
-        continue;
-      }
-    }
     return null;
   }
 
@@ -256,7 +240,7 @@ export default class {
    * @param moduleId Webpack module ID
    */
   public get(moduleId: string): any {
-    return this._modules.get(moduleId);
+    return this._modules.get(moduleId + '');
   }
 
   public forEach(
