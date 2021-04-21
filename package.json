@@ -14,16 +14,11 @@
     "license:add": "license-check-and-add add",
     "license:check": "license-check-and-add check",
     "lint": "npx eslint -c .eslintrc.js --ext .ts src",
-    "prepare": "npm run compile:prod",
+    "prepare": "husky install && npm run compile:prod",
     "release": "release-it",
     "serve:dev": "webpack serve --mode development",
     "serve:prod": "webpack serve --mode production",
     "serve:watch": "webpack serve --mode development --progress --watch"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   },
   "config": {
     "commitizen": {
