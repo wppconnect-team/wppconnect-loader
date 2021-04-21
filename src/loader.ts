@@ -185,7 +185,7 @@ class WPPConnectLoader {
    * @param condition Function for compare the modules
    * @param reverse Search in reverse order
    */
-  public searchModule(condition: SearchModuleCondition, reverse = false): any {
+  public searchModule<T>(condition: SearchModuleCondition, reverse = false): T {
     const moduleId = this.searchModuleId(condition, reverse);
 
     if (moduleId) {
@@ -199,12 +199,12 @@ class WPPConnectLoader {
    * Return the webpack module from a search function, checking new loaded scripts
    * @param condition Function for compare the modules
    */
-  async waitForModule(
+  async waitForModule<T>(
     condition: SearchModuleCondition,
     reverse = false,
     timeout: number | false = false
-  ): Promise<any> {
-    const module = await this.searchModule(condition, reverse);
+  ): Promise<T> {
+    const module = await this.searchModule<T>(condition, reverse);
 
     if (module) {
       return module;
@@ -217,7 +217,7 @@ class WPPConnectLoader {
         if (!refreshed) {
           return;
         }
-        const module = await this.searchModule(condition, reverse);
+        const module = await this.searchModule<T>(condition, reverse);
 
         if (module) {
           this.off('refresh', check);
@@ -239,7 +239,7 @@ class WPPConnectLoader {
    * Return the webpack module from ID
    * @param moduleId Webpack module ID
    */
-  public get(moduleId: string): any {
+  public get<T>(moduleId: string): T {
     return this._modules.get(moduleId + '');
   }
 
