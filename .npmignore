@@ -3,6 +3,8 @@
 *.tgz
 *.zip
 docs
+license-checker-config.json
+LICENSE.header
 src
 tsconfig.json
 typedoc.json

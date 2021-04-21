@@ -14,6 +14,6 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with WPPConnect.  If not, see <https://www.gnu.org/licenses/>.
  */
-import * as loader from './loader';
+import WPPConnectLoader from './loader';
 
-module.exports = loader.default;
+export default WPPConnectLoader;

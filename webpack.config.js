@@ -18,7 +18,6 @@
 
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const NpmDtsPlugin = require('npm-dts-webpack-plugin');
 
 const config = {
   entry: './src/index.ts',
@@ -43,12 +42,7 @@ const config = {
       },
     ],
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new NpmDtsPlugin({
-      output: path.resolve(__dirname, 'dist') + '/loader.d.ts',
-    }),
-  ],
+  plugins: [new CleanWebpackPlugin()],
 };
 
 module.exports = (env, argv) => {
