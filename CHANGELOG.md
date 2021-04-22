@@ -1,3 +1,12 @@
+## [1.0.3](https://github.com/wppconnect-team/wppconnect-loader/compare/v1.0.2...v1.0.3) (2021-04-22)
+
+
+### Bug Fixes
+
+* Fixed default generic return type ([c4e38f1](https://github.com/wppconnect-team/wppconnect-loader/commit/c4e38f19b04165ec1a5d52471157e7ea32d1112e))
+
+
+
 ## [1.0.2](https://github.com/wppconnect-team/wppconnect-loader/compare/v1.0.1...v1.0.2) (2021-04-21)
 
 
