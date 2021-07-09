@@ -17,16 +17,18 @@
 export interface Options {
   refreshModules?: boolean;
   startObserver?: boolean;
+  chunkNames?: string[];
 }
 
 export const defaultOptions: Options = {
   refreshModules: true,
   startObserver: true,
+  chunkNames: ['webpackChunkbuild', 'webpackChunkwhatsapp_web_client'],
 };
 
 type SearchModuleCondition = (module: any, moduleId?: string) => boolean;
 
-class WPPConnectLoader {
+export default class WPPConnectLoader {
   private _options: Options;
   private _modules = new Map<string, any>();
 
@@ -122,32 +124,41 @@ class WPPConnectLoader {
   }
 
   public refreshModules(): Promise<boolean> {
-    if (!Array.isArray(window.webpackChunkbuild)) {
-      return Promise.resolve(false);
+    const chunkNames = this._options.chunkNames || ['webpackChunkbuild'];
+
+    const chunks: any[][] = [];
+    for (const name of chunkNames) {
+      const chunk = (window as any)[name] as any[];
+      if (!Array.isArray(chunk) || !chunk.length) {
+        continue;
+      }
+      chunks.push(chunk);
     }
 
-    if (!window.webpackChunkbuild.length) {
+    if (!chunks.length) {
       return Promise.resolve(false);
     }
 
     const currentSize = this._modules.size;
 
     return new Promise<boolean>((resolve) => {
-      const id = Date.now();
-      window.webpackChunkbuild.push([
-        [id],
-        {},
-        (moduleLoader: any) => {
-          for (const moduleId in moduleLoader.m) {
-            const module = moduleLoader(moduleId);
-            this._modules.set(moduleId + '', module);
-          }
+      for (const chunk of chunks) {
+        const id = Date.now();
+        chunk.push([
+          [id],
+          {},
+          (moduleLoader: any) => {
+            for (const moduleId in moduleLoader.m) {
+              const module = moduleLoader(moduleId);
+              this._modules.set(moduleId + '', module);
+            }
 
-          const hasNewElement = currentSize !== this._modules.size;
-          this.emit('refresh', hasNewElement);
-          resolve(hasNewElement);
-        },
-      ]);
+            const hasNewElement = currentSize !== this._modules.size;
+            this.emit('refresh', hasNewElement);
+            resolve(hasNewElement);
+          },
+        ]);
+      }
     });
   }
 
@@ -262,5 +273,3 @@ class WPPConnectLoader {
     this._events.clear();
   }
 }
-
-export default WPPConnectLoader;
