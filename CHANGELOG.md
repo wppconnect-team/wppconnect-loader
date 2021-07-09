@@ -1,3 +1,12 @@
+## [1.0.5](https://github.com/wppconnect-team/wppconnect-loader/compare/v1.0.4...v1.0.5) (2021-07-09)
+
+
+### Bug Fixes
+
+* Fixed .d.ts generation ([c0e7543](https://github.com/wppconnect-team/wppconnect-loader/commit/c0e75438ff62385fefc5f6528d7ff82e4e4a03fb))
+
+
+
 ## [1.0.4](https://github.com/wppconnect-team/wppconnect-loader/compare/v1.0.3...v1.0.4) (2021-07-09)
 
 
