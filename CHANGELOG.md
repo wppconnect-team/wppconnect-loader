@@ -1,3 +1,12 @@
+## [1.0.4](https://github.com/wppconnect-team/wppconnect-loader/compare/v1.0.3...v1.0.4) (2021-07-09)
+
+
+### Bug Fixes
+
+* Fixed webpack variable name for WhatsApp web update ([ac9d531](https://github.com/wppconnect-team/wppconnect-loader/commit/ac9d53177f37c5749289ff10eeddbcb2b4104849))
+
+
+
 ## [1.0.3](https://github.com/wppconnect-team/wppconnect-loader/compare/v1.0.2...v1.0.3) (2021-04-22)
 
 
