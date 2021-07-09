@@ -28,7 +28,7 @@ export const defaultOptions: Options = {
 
 type SearchModuleCondition = (module: any, moduleId?: string) => boolean;
 
-export default class WPPConnectLoader {
+class WPPConnectLoader {
   private _options: Options;
   private _modules = new Map<string, any>();
 
@@ -273,3 +273,5 @@ export default class WPPConnectLoader {
     this._events.clear();
   }
 }
+
+export default WPPConnectLoader;
