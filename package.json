@@ -38,7 +38,7 @@
   "homepage": "https://github.com/wppconnect-team/wppconnect-loader#readme",
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
-    "@commitlint/config-angular": "^12.0.1",
+    "@commitlint/config-angular": "^13.1.0",
     "@typescript-eslint/eslint-plugin": "^4.16.1",
     "@typescript-eslint/parser": "^4.16.1",
     "clean-webpack-plugin": "^3.0.0",
