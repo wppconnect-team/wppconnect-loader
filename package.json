@@ -54,7 +54,7 @@
     "license-check-and-add": "^4.0.2",
     "prettier": "^2.2.1",
     "release-it": "^14.4.1",
-    "trim-newlines": "^3.0.1",
+    "trim-newlines": "^4.0.2",
     "ts-loader": "^9.0.2",
     "typescript": "^4.2.2",
     "webpack": "^5.17.0",
