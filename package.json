@@ -45,7 +45,7 @@
     "commitizen": "^4.2.3",
     "conventional-changelog-cli": "^2.1.1",
     "cz-conventional-changelog": "^3.3.0",
-    "dts-bundle-generator": "^5.9.0",
+    "dts-bundle-generator": "^6.0.0",
     "eslint": "^7.21.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^4.0.0",
